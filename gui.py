@@ -37,7 +37,7 @@ class GUI:
         # First number
         self.frame_first = Frame(self.window)
         self.label_first = Label(self.frame_first)
-        self.entry_first = Entry(self.frame_first, width=40)
+        self.entry_first = Entry(self.frame_first, width=60)
         self.label_first.pack(padx=20, side='left')
         self.entry_first.pack(padx=20, side='left')
         self.frame_first.pack(anchor='w', pady=10)
@@ -46,7 +46,7 @@ class GUI:
         # Second number
         self.frame_second = Frame(self.window)
         self.label_second = Label(self.frame_second)
-        self.entry_second = Entry(self.frame_second, width=40)
+        self.entry_second = Entry(self.frame_second, width=60)
         self.label_second.pack(padx=20, side='left')
         self.entry_second.pack(padx=20, side='left')
         self.frame_second.pack(anchor='w', pady=10)
@@ -55,7 +55,7 @@ class GUI:
         # Third number
         self.frame_third = Frame(self.window)
         self.label_third = Label(self.frame_third)
-        self.entry_third = Entry(self.frame_third, width=40)
+        self.entry_third = Entry(self.frame_third, width=60)
         self.label_third.pack(padx=20, side='left')
         self.entry_third.pack(padx=20, side='left')
         self.frame_third.pack(anchor='w', pady=10)
@@ -72,6 +72,13 @@ class GUI:
         self.button_compute = Button(self.frame_button, text='COMPUTE', command=self.compute)
         self.button_compute.pack(pady=10)
         self.frame_button.pack()
+
+        # Clear button
+        self.frame_button = Frame(self.window)
+        self.button_compute = Button(self.frame_button, text='Clear', command=self.clear)
+        self.button_compute.pack(pady=10)
+        self.frame_button.pack()
+
 
     def shape(self):
         self.entry_first.delete(0, END)
@@ -152,3 +159,11 @@ class GUI:
             self.label_result.config(text='Enter numeric values')
         except TypeError:
             self.label_result.config(text='Values must be positive')
+
+    def clear(self):
+        self.entry_first.delete(0, END)
+        self.entry_second.delete(0, END)
+        self.entry_third.delete(0, END)
+        self.label_result.config(text='')
+
+
