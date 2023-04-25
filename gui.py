@@ -19,7 +19,7 @@ class GUI:
         self.radio_triangle = Radiobutton(self.frame_shape, text='Triangle', variable=self.radio_1, value=4,
                                           command=self.shape)
         self.radio_trapezoid = Radiobutton(self.frame_shape, text='Trapezoid', variable=self.radio_1, value=5,
-                                          command=self.shape)
+                                           command=self.shape)
         self.label_operation.pack(side='left', padx=5)
         self.radio_circle.pack(side='left')
         self.radio_square.pack(side='left')
@@ -48,13 +48,12 @@ class GUI:
 
         # Third number
         self.frame_third = Frame(self.window)
-        self.label_third= Label(self.frame_third)
+        self.label_third = Label(self.frame_third)
         self.entry_third = Entry(self.frame_third, width=40)
         self.label_third.pack(padx=20, side='left')
         self.entry_third.pack(padx=20, side='left')
         self.frame_third.pack(anchor='w', pady=10)
         self.entry_third.pack_forget()
-
 
         # Results label
         self.frame_result = Frame(self.window)
@@ -79,30 +78,40 @@ class GUI:
         if shape == 1:
             self.label_first.config(text='Radius')
             self.label_second.config(text='')
+            self.label_third.pack_forget()
             self.entry_second.pack_forget()
+            self.entry_third.pack_forget()
         elif shape == 2:
             self.label_first.config(text='Side')
             self.label_second.config(text='')
+            self.label_third.pack_forget()
             self.entry_second.pack_forget()
+            self.entry_third.pack_forget()
         elif shape == 3:
             self.label_first.config(text='Length')
             self.label_second.config(text='Width')
+            self.label_third.pack_forget()
             self.entry_second.pack()
+            self.entry_third.pack_forget()
         elif shape == 4:
             self.label_first.config(text='Base')
             self.label_second.config(text='Height')
+            self.label_third.pack_forget()
             self.entry_second.pack()
+            self.entry_third.pack_forget()
         elif shape == 5:
+            self.label_third.pack(padx=20, side='left')
             self.label_first.config(text='Base')
             self.label_second.config(text='Height')
             self.label_third.config(text='Width')
             self.entry_second.pack()
-
+            self.entry_third.pack()
 
     def compute(self):
         try:
             first_num = self.entry_first.get()
             second_num = self.entry_second.get()
+            third_num = self.entry_third.get()
             shape = self.radio_1.get()
 
             if shape == 1:
@@ -114,12 +123,10 @@ class GUI:
             elif shape == 4:
                 self.label_result.config(text=f'Triangle area = {area.triangle(first_num, second_num)}')
             elif shape == 5:
-                self.label_result.config(text=f'Trapezoid area = {area.trapezoid(first_num, second_num,third_num)}')
+                self.label_result.config(text=f'Trapezoid area = {area.trapezoid(first_num, second_num, third_num)}')
             else:
                 self.label_result.config(text='No operation selected')
         except ValueError:
             self.label_result.config(text='Enter numeric values')
         except TypeError:
             self.label_result.config(text='Values must be positive')
-
-
