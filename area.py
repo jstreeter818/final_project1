@@ -27,3 +27,15 @@ def triangle(value1, value2):
     if base <= 0 or height <= 0:
         raise TypeError
     return (1 / 2) * base * height
+
+def trapezoid(value1, value2, value3):
+    base,height,width = float(value1), float(value2), float(value3)
+    if base <=0 or height <= 0 or width <= 0:
+        raise TypeError
+    return width+base/2*height
+
+def rhombus(value1, value2):
+    width,height = float(value1), float(value2)
+    if width <= 0, or height <= 0:
+        raise Type Error
+    return (1 / 2) * width * height
