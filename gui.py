@@ -20,12 +20,15 @@ class GUI:
                                           command=self.shape)
         self.radio_trapezoid = Radiobutton(self.frame_shape, text='Trapezoid', variable=self.radio_1, value=5,
                                            command=self.shape)
+        self.radio_rhombus = Radiobutton(self.frame_shape, text='Rhombus', variable=self.radio_1, value=6,
+                                           command=self.shape)
         self.label_operation.pack(side='left', padx=5)
         self.radio_circle.pack(side='left')
         self.radio_square.pack(side='left')
         self.radio_rectangle.pack(side='left')
         self.radio_triangle.pack(side='left')
         self.radio_trapezoid.pack(side='left')
+        self.radio_rhombus.pack(side='left')
         self.frame_shape.pack(anchor='w', pady=10)
 
         # First number
@@ -102,10 +105,17 @@ class GUI:
         elif shape == 5:
             self.label_third.pack(padx=20, side='left')
             self.label_first.config(text='Base')
-            self.label_second.config(text='Height')
-            self.label_third.config(text='Width')
+            self.label_second.config(text='Base(2)')
+            self.label_third.config(text='Height')
             self.entry_second.pack()
             self.entry_third.pack()
+        elif shape == 6:
+            self.label_first.config(text='Width')
+            self.label_second.config(text='Height')
+            self.label_third.pack_forget()
+            self.entry_second.pack()
+            self.entry_third.pack_forget()
+
 
     def compute(self):
         try:
@@ -124,6 +134,8 @@ class GUI:
                 self.label_result.config(text=f'Triangle area = {area.triangle(first_num, second_num)}')
             elif shape == 5:
                 self.label_result.config(text=f'Trapezoid area = {area.trapezoid(first_num, second_num, third_num)}')
+            elif shape == 6:
+                self.label_result.config(text=f'Rhombus area = {area.rhombus(first_num, second_num)}')
             else:
                 self.label_result.config(text='No operation selected')
         except ValueError:
