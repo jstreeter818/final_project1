@@ -3,7 +3,7 @@ from gui import *
 
 def main():
     window = Tk()
-    window.title('Shape Calculator')
+    window.title('Shape Area Calculator')
     window.geometry('600x300')
     window.resizable(False, False)
 
