@@ -2,6 +2,7 @@ from tkinter import *
 import area
 
 
+
 class GUI:
     def __init__(self, window):
         self.window = window
@@ -10,8 +11,11 @@ class GUI:
         self.label_operation = Label(self.frame_shape, text='Shape\t')
         self.radio_1 = IntVar()
         self.radio_1.set(0)
+        circle_image = PhotoImage(file="images/circle.png")
+        circle_image = circle_image.subsample(6)
+
         self.radio_circle = Radiobutton(self.frame_shape, text='Circle', variable=self.radio_1, value=1,
-                                        command=self.shape)
+                                        command=self.shape, image=circle_image)
         self.radio_square = Radiobutton(self.frame_shape, text='Square', variable=self.radio_1, value=2,
                                         command=self.shape)
         self.radio_rectangle = Radiobutton(self.frame_shape, text='Rectangle', variable=self.radio_1, value=3,
@@ -78,7 +82,6 @@ class GUI:
         self.button_compute = Button(self.frame_button, text='Clear', command=self.clear)
         self.button_compute.pack(pady=10)
         self.frame_button.pack()
-
 
     def shape(self):
         self.entry_first.delete(0, END)
