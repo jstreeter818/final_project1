@@ -79,6 +79,11 @@ class GUI:
         self.button_compute.pack(pady=10)
         self.frame_button.pack()
 
+        # FIXME: Saved shapes button
+
+        # FIXME: Save shape button
+
+        # FIXME: Clear saved shapes button
 
     def shape(self):
         self.entry_first.delete(0, END)
@@ -165,5 +170,11 @@ class GUI:
         self.entry_second.delete(0, END)
         self.entry_third.delete(0, END)
         self.label_result.config(text='')
+
+    # FIXME: Add Save shape method
+
+    # FIXME: Add Show saved shapes method
+
+    # FIXME: Add clear saved shapes method
 
 
