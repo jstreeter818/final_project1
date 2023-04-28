@@ -7,7 +7,7 @@ class GUI:
         self.window = window
 
         self.frame_shape = Frame(self.window)
-        self.label_operation = Label(self.frame_shape, text='Shape\t')
+        self.label_operation = Label(self.frame_shape, text='Shapes\t')
         self.radio_1 = IntVar()
         self.radio_1.set(0)
         self.circle_image = PhotoImage(file="images/circle.png")
@@ -25,22 +25,20 @@ class GUI:
         self.ellipse_image = PhotoImage(file="images/ellipse.png")
         self.ellipse_image = self.ellipse_image.subsample(6)
 
-
-
-        self.radio_circle = Radiobutton(self.frame_shape, text='Circle', variable=self.radio_1, value=1,
+        self.radio_circle = Radiobutton(self.frame_shape, variable=self.radio_1, value=1,
                                         command=self.shape, image=self.circle_image)
-        self.radio_square = Radiobutton(self.frame_shape, text='Square', variable=self.radio_1, value=2,
-                                        command=self.shape,image=self.square_image)
-        self.radio_rectangle = Radiobutton(self.frame_shape, text='Rectangle', variable=self.radio_1, value=3,
-                                           command=self.shape,image=self.rectangle_image)
-        self.radio_triangle = Radiobutton(self.frame_shape, text='Triangle', variable=self.radio_1, value=4,
-                                          command=self.shape,image=self.triangle_image)
-        self.radio_trapezoid = Radiobutton(self.frame_shape, text='Trapezoid', variable=self.radio_1, value=5,
-                                           command=self.shape,image=self.trapezoid_image)
-        self.radio_rhombus = Radiobutton(self.frame_shape, text='Rhombus', variable=self.radio_1, value=6,
-                                         command=self.shape,image=self.rhombus_image)
-        self.radio_ellipse = Radiobutton(self.frame_shape, text='Ellipse', variable=self.radio_1, value=7,
-                                         command=self.shape,image=self.ellipse_image)
+        self.radio_square = Radiobutton(self.frame_shape, variable=self.radio_1, value=2,
+                                        command=self.shape, image=self.square_image)
+        self.radio_rectangle = Radiobutton(self.frame_shape, variable=self.radio_1, value=3,
+                                           command=self.shape, image=self.rectangle_image)
+        self.radio_triangle = Radiobutton(self.frame_shape, variable=self.radio_1, value=4,
+                                          command=self.shape, image=self.triangle_image)
+        self.radio_trapezoid = Radiobutton(self.frame_shape, variable=self.radio_1, value=5,
+                                           command=self.shape, image=self.trapezoid_image)
+        self.radio_rhombus = Radiobutton(self.frame_shape, variable=self.radio_1, value=6,
+                                         command=self.shape, image=self.rhombus_image)
+        self.radio_ellipse = Radiobutton(self.frame_shape, variable=self.radio_1, value=7,
+                                         command=self.shape, image=self.ellipse_image)
         self.label_operation.pack(side='left', padx=5)
         self.radio_circle.pack(side='left')
         self.radio_square.pack(side='left')
