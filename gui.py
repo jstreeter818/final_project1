@@ -7,23 +7,38 @@ class GUI:
         self.window = window
 
         self.frame_shape = Frame(self.window)
-        self.label_operation = Label(self.frame_shape, text='Shape\t')
+        self.label_operation = Label(self.frame_shape, text='Shapes\t')
         self.radio_1 = IntVar()
         self.radio_1.set(0)
-        self.radio_circle = Radiobutton(self.frame_shape, text='Circle', variable=self.radio_1, value=1,
-                                        command=self.shape)
-        self.radio_square = Radiobutton(self.frame_shape, text='Square', variable=self.radio_1, value=2,
-                                        command=self.shape)
-        self.radio_rectangle = Radiobutton(self.frame_shape, text='Rectangle', variable=self.radio_1, value=3,
-                                           command=self.shape)
-        self.radio_triangle = Radiobutton(self.frame_shape, text='Triangle', variable=self.radio_1, value=4,
-                                          command=self.shape)
-        self.radio_trapezoid = Radiobutton(self.frame_shape, text='Trapezoid', variable=self.radio_1, value=5,
-                                           command=self.shape)
-        self.radio_rhombus = Radiobutton(self.frame_shape, text='Rhombus', variable=self.radio_1, value=6,
-                                         command=self.shape)
-        self.radio_ellipse = Radiobutton(self.frame_shape, text='Ellipse', variable=self.radio_1, value=7,
-                                         command=self.shape)
+        self.circle_image = PhotoImage(file="images/circle.png")
+        self.circle_image = self.circle_image.subsample(6)
+        self.square_image = PhotoImage(file="images/square.png")
+        self.square_image = self.square_image.subsample(20)
+        self.rectangle_image = PhotoImage(file="images/rectangle.png")
+        self.rectangle_image = self.rectangle_image.subsample(6)
+        self.triangle_image = PhotoImage(file="images/triangle.png")
+        self.triangle_image = self.triangle_image.subsample(6)
+        self.trapezoid_image = PhotoImage(file="images/trapezoid.png")
+        self.trapezoid_image = self.trapezoid_image.subsample(5)
+        self.rhombus_image = PhotoImage(file="images/rhombus.png")
+        self.rhombus_image = self.rhombus_image.subsample(15)
+        self.ellipse_image = PhotoImage(file="images/ellipse.png")
+        self.ellipse_image = self.ellipse_image.subsample(6)
+
+        self.radio_circle = Radiobutton(self.frame_shape, variable=self.radio_1, value=1,
+                                        command=self.shape, image=self.circle_image)
+        self.radio_square = Radiobutton(self.frame_shape, variable=self.radio_1, value=2,
+                                        command=self.shape, image=self.square_image)
+        self.radio_rectangle = Radiobutton(self.frame_shape, variable=self.radio_1, value=3,
+                                           command=self.shape, image=self.rectangle_image)
+        self.radio_triangle = Radiobutton(self.frame_shape, variable=self.radio_1, value=4,
+                                          command=self.shape, image=self.triangle_image)
+        self.radio_trapezoid = Radiobutton(self.frame_shape, variable=self.radio_1, value=5,
+                                           command=self.shape, image=self.trapezoid_image)
+        self.radio_rhombus = Radiobutton(self.frame_shape, variable=self.radio_1, value=6,
+                                         command=self.shape, image=self.rhombus_image)
+        self.radio_ellipse = Radiobutton(self.frame_shape, variable=self.radio_1, value=7,
+                                         command=self.shape, image=self.ellipse_image)
         self.label_operation.pack(side='left', padx=5)
         self.radio_circle.pack(side='left')
         self.radio_square.pack(side='left')
@@ -78,12 +93,6 @@ class GUI:
         self.button_compute = Button(self.frame_button, text='Clear', command=self.clear)
         self.button_compute.pack(pady=10)
         self.frame_button.pack()
-
-        # FIXME: Saved shapes button
-
-        # FIXME: Save shape button
-
-        # FIXME: Clear saved shapes button
 
     def shape(self):
         self.entry_first.delete(0, END)
@@ -170,11 +179,3 @@ class GUI:
         self.entry_second.delete(0, END)
         self.entry_third.delete(0, END)
         self.label_result.config(text='')
-
-    # FIXME: Add Save shape method
-
-    # FIXME: Add Show saved shapes method
-
-    # FIXME: Add clear saved shapes method
-
-
