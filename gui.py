@@ -94,8 +94,14 @@ class GUI:
 
         # Clear button
         self.frame_button = Frame(self.window)
-        self.button_compute = Button(self.frame_button, text='Clear', command=self.clear)
-        self.button_compute.pack(pady=10)
+        self.button_clear = Button(self.frame_button, text='Clear', command=self.clear)
+        self.button_clear.pack(pady=10)
+        self.frame_button.pack()
+
+        # Save shape button
+        self.frame_button = Frame(self.window)
+        self.button_save = Button(self.frame_button, text='Save Shape', command=self.save_shape)
+        self.button_save.pack(pady=5)
         self.frame_button.pack()
 
     def shape(self):
@@ -183,3 +189,38 @@ class GUI:
         self.entry_second.delete(0, END)
         self.entry_third.delete(0, END)
         self.label_result.config(text='')
+
+    def save_shape(self):
+        shape = self.radio_1.get()
+        if shape == 1:
+            radius = self.entry_first.get()
+            shape_data = {'Type': 'Circle', 'Radius': radius}
+        elif shape == 2:
+            side = self.entry_first.get()
+            shape_data = {'Type': 'Square', 'Side': side}
+        elif shape == 3:
+            length = self.entry_first.get()
+            width = self.entry_second.get()
+            shape_data = {'Type': 'Rectangle', 'Length': length, 'Width': width}
+        elif shape == 4:
+            base = self.entry_first.get()
+            height = self.entry_second.get()
+            shape_data = {'Type': 'Triangle', 'Base': base, 'Height': height}
+        elif shape == 5:
+            base_1 = self.entry_first.get()
+            base_2 = self.entry_second.get()
+            height = self.entry_third.get()
+            shape_data = {'Type': 'Trapezoid', 'Base_1': base_1, 'Base_2': base_2, 'Height': height}
+        elif shape == 6:
+            diagonal_1 = self.entry_first.get()
+            diagonal_2 = self.entry_second.get()
+            shape_data = {'Type': 'Rhombus', 'Diagonal_1': diagonal_1, 'Diagonal_2': diagonal_2}
+        elif shape == 7:
+            major_axis = self.entry_first.get()
+            minor_axis = self.entry_second.get()
+            shape_data = {'Type': 'Ellipse', 'Major_axis': major_axis, 'Minor_axis': minor_axis}
+
+        print(f"Saved shape: {shape_data}")
+
+
+
