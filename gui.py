@@ -10,6 +10,8 @@ class GUI:
         self.label_operation = Label(self.frame_shape, text='Shapes\t')
         self.radio_1 = IntVar()
         self.radio_1.set(0)
+
+        # inputs images
         self.circle_image = PhotoImage(file="images/circle.png")
         self.circle_image = self.circle_image.subsample(6)
         self.square_image = PhotoImage(file="images/square.png")
@@ -24,6 +26,8 @@ class GUI:
         self.rhombus_image = self.rhombus_image.subsample(15)
         self.ellipse_image = PhotoImage(file="images/ellipse.png")
         self.ellipse_image = self.ellipse_image.subsample(6)
+
+        # Radio buttons
 
         self.radio_circle = Radiobutton(self.frame_shape, variable=self.radio_1, value=1,
                                         command=self.shape, image=self.circle_image)
