@@ -1,5 +1,6 @@
 from tkinter import *
 import area
+import perimeter
 
 
 class GUI:
@@ -86,10 +87,16 @@ class GUI:
         self.label_result.pack(pady=10)
         self.frame_result.pack()
 
-        # Compute button
+        # Compute AREA button
         self.frame_button = Frame(self.window)
-        self.button_compute = Button(self.frame_button, text='COMPUTE', command=self.compute)
-        self.button_compute.pack(pady=10)
+        self.button_compute_a = Button(self.frame_button, text='COMPUTE AREA', command=self.compute_area)
+        self.button_compute_a.pack(pady=10)
+        self.frame_button.pack()
+
+        # Compute PERIMETER button
+        self.frame_button = Frame(self.window)
+        self.button_compute_p = Button(self.frame_button, text='COMPUTE PERIMETER/CIRCUMFERENCE', command=self.compute_perimeter)
+        self.button_compute_p.pack(pady=10)
         self.frame_button.pack()
 
         # Clear button
@@ -97,16 +104,6 @@ class GUI:
         self.button_clear = Button(self.frame_button, text='Clear', command=self.clear)
         self.button_clear.pack(pady=10)
         self.frame_button.pack()
-
-        # FIXME: save_shape button
-        self.frame_button = Frame(self.window)
-        self.button_save = Button(self.frame_button, text='Save Shape', command=self.save_shape)
-        self.button_save.pack(pady=5)
-        self.frame_button.pack()
-
-        # FIXME: saved_shapes button
-
-        # FIXME: clear_saved_shapes button
 
     def shape(self):
         self.entry_first.delete(0, END)
@@ -160,7 +157,7 @@ class GUI:
             self.entry_second.pack()
             self.entry_third.pack_forget()
 
-    def compute(self):
+    def compute_area(self):
         try:
             first_num = self.entry_first.get()
             second_num = self.entry_second.get()
@@ -188,48 +185,13 @@ class GUI:
         except TypeError:
             self.label_result.config(text='Values must be positive')
 
+    # FIXME: add logic for function
+    def compute_perimeter(self):
+        pass
+
     def clear(self):
         self.entry_first.delete(0, END)
         self.entry_second.delete(0, END)
         self.entry_third.delete(0, END)
         self.label_result.config(text='')
 
-    # FIXME: save_shape() method - display message to window
-    def save_shape(self):
-        shape = self.radio_1.get()
-        if shape == 1:
-            radius = self.entry_first.get()
-            shape_data = {'Type': 'Circle', 'Radius': radius, 'Area': area.circle(radius)}
-        elif shape == 2:
-            side = self.entry_first.get()
-            shape_data = {'Type': 'Square', 'Side': side, 'Area': area.square(side)}
-        elif shape == 3:
-            length = self.entry_first.get()
-            width = self.entry_second.get()
-            shape_data = {'Type': 'Rectangle', 'Length': length, 'Width': width, 'Area': area.rectangle(length, width)}
-        elif shape == 4:
-            base = self.entry_first.get()
-            height = self.entry_second.get()
-            shape_data = {'Type': 'Triangle', 'Base': base, 'Height': height, 'Area': area.triangle(base, height)}
-        elif shape == 5:
-            base_1 = self.entry_first.get()
-            base_2 = self.entry_second.get()
-            height = self.entry_third.get()
-            shape_data = {'Type': 'Trapezoid', 'Base_1': base_1, 'Base_2': base_2, 'Height': height, 'Area': area.trapezoid(base_1, base_2, height)}
-        elif shape == 6:
-            diagonal_1 = self.entry_first.get()
-            diagonal_2 = self.entry_second.get()
-            shape_data = {'Type': 'Rhombus', 'Diagonal_1': diagonal_1, 'Diagonal_2': diagonal_2, 'Area': area.rhombus(diagonal_1, diagonal_2)}
-        elif shape == 7:
-            major_axis = self.entry_first.get()
-            minor_axis = self.entry_second.get()
-            shape_data = {'Type': 'Ellipse', 'Major_axis': major_axis, 'Minor_axis': minor_axis, 'Area': area.ellipse(major_axis, minor_axis)}
-        print(f"Saved shape: {shape_data}")
-
-    # FIXME: show_saved_shapes() method
-    def show_saved_shapes(self):
-        pass
-
-    # FIXME: clear_saved_shapes() method
-    def clear_saved_shapes(self):
-        pass
