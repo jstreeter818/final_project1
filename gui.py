@@ -52,7 +52,7 @@ class GUI:
         self.radio_trapezoid.pack(side='left')
         self.radio_rhombus.pack(side='left')
         self.radio_ellipse.pack(side='left')
-        self.frame_shape.pack(anchor='w', pady=10)
+        self.frame_shape.pack(anchor='w', pady=5)
 
         # First number
         self.frame_first = Frame(self.window)
@@ -60,7 +60,7 @@ class GUI:
         self.entry_first = Entry(self.frame_first, width=60)
         self.label_first.pack(padx=20, side='left')
         self.entry_first.pack(padx=20, side='left')
-        self.frame_first.pack(anchor='w', pady=10)
+        self.frame_first.pack(anchor='w', pady=5)
         self.entry_first.pack_forget()
 
         # Second number
@@ -69,7 +69,7 @@ class GUI:
         self.entry_second = Entry(self.frame_second, width=60)
         self.label_second.pack(padx=20, side='left')
         self.entry_second.pack(padx=20, side='left')
-        self.frame_second.pack(anchor='w', pady=10)
+        self.frame_second.pack(anchor='w', pady=5)
         self.entry_second.pack_forget()
 
         # Third number
@@ -78,37 +78,57 @@ class GUI:
         self.entry_third = Entry(self.frame_third, width=60)
         self.label_third.pack(padx=20, side='left')
         self.entry_third.pack(padx=20, side='left')
-        self.frame_third.pack(anchor='w', pady=10)
+        self.frame_third.pack(anchor='w', pady=5)
         self.entry_third.pack_forget()
+
+        # Fourth number
+        self.frame_fourth = Frame(self.window)
+        self.label_fourth = Label(self.frame_fourth)
+        self.entry_fourth = Entry(self.frame_fourth, width=60)
+        self.label_fourth.pack(padx=20, side='left')
+        self.entry_fourth.pack(padx=20, side='left')
+        self.frame_fourth.pack(anchor='w', pady=5)
+        self.entry_fourth.pack_forget()
+
+        # Fifth number
+        self.frame_fifth = Frame(self.window)
+        self.label_fifth = Label(self.frame_fifth)
+        self.entry_fifth = Entry(self.frame_fifth, width=60)
+        self.label_fifth.pack(padx=20, side='left')
+        self.entry_fifth.pack(padx=20, side='left')
+        self.frame_fifth.pack(anchor='w', pady=5)
+        self.entry_fifth.pack_forget()
 
         # Results label
         self.frame_result = Frame(self.window)
         self.label_result = Label(self.frame_result)
-        self.label_result.pack(pady=10)
+        self.label_result.pack(pady=5)
         self.frame_result.pack()
 
         # Compute AREA button
         self.frame_button = Frame(self.window)
         self.button_compute_a = Button(self.frame_button, text='COMPUTE AREA', command=self.compute_area)
-        self.button_compute_a.pack(pady=10)
+        self.button_compute_a.pack(pady=5)
         self.frame_button.pack()
 
         # Compute PERIMETER button
         self.frame_button = Frame(self.window)
         self.button_compute_p = Button(self.frame_button, text='COMPUTE PERIMETER/CIRCUMFERENCE', command=self.compute_perimeter)
-        self.button_compute_p.pack(pady=10)
+        self.button_compute_p.pack(pady=5)
         self.frame_button.pack()
 
         # Clear button
         self.frame_button = Frame(self.window)
         self.button_clear = Button(self.frame_button, text='Clear', command=self.clear)
-        self.button_clear.pack(pady=10)
+        self.button_clear.pack(pady=5)
         self.frame_button.pack()
 
     def shape(self):
         self.entry_first.delete(0, END)
         self.entry_second.delete(0, END)
         self.entry_third.delete(0, END)
+        self.entry_fourth.delete(0, END)
+        self.entry_fifth.delete(0, END)
         self.label_result.config(text='')
         self.entry_first.pack()
         shape = self.radio_1.get()
@@ -116,46 +136,74 @@ class GUI:
         if shape == 1:
             self.label_first.config(text='Radius')
             self.label_second.config(text='')
-            self.label_third.pack_forget()
+            self.label_third.config(text='')
+            self.label_fourth.config(text='')
+            self.label_fifth.config(text='')
             self.entry_second.pack_forget()
             self.entry_third.pack_forget()
+            self.entry_fourth.pack_forget()
+            self.entry_fifth.pack_forget()
         elif shape == 2:
             self.label_first.config(text='Side')
             self.label_second.config(text='')
-            self.label_third.pack_forget()
+            self.label_third.config(text='')
+            self.label_fourth.config(text='')
+            self.label_fifth.config(text='')
             self.entry_second.pack_forget()
             self.entry_third.pack_forget()
+            self.entry_fourth.pack_forget()
+            self.entry_fifth.pack_forget()
         elif shape == 3:
             self.label_first.config(text='Length')
             self.label_second.config(text='Width')
-            self.label_third.pack_forget()
-            self.entry_second.pack()
+            self.label_third.config(text='')
+            self.label_fourth.config(text='')
+            self.label_fifth.config(text='')
             self.entry_third.pack_forget()
+            self.entry_fourth.pack_forget()
+            self.entry_fifth.pack_forget()
+            self.entry_second.pack()
         elif shape == 4:
             self.label_first.config(text='Base')
             self.label_second.config(text='Height')
-            self.label_third.pack_forget()
+            self.label_third.config(text='Side')
+            self.label_fourth.config(text='Side(2)')
+            self.label_fifth.config(text='')
+            self.entry_fifth.pack_forget()
             self.entry_second.pack()
-            self.entry_third.pack_forget()
+            self.entry_third.pack()
+            self.entry_fourth.pack()
         elif shape == 5:
             self.label_third.pack(padx=20, side='left')
             self.label_first.config(text='Base')
             self.label_second.config(text='Base(2)')
             self.label_third.config(text='Height')
+            self.label_fourth.config(text='Side')
+            self.label_fifth.config(text='Side(2)')
             self.entry_second.pack()
             self.entry_third.pack()
+            self.entry_fourth.pack()
+            self.entry_fifth.pack()
         elif shape == 6:
             self.label_first.config(text='Width')
             self.label_second.config(text='Height')
-            self.label_third.pack_forget()
+            self.label_third.config(text='Side')
+            self.label_fourth.config(text='')
+            self.label_fifth.config(text='')
+            self.entry_fourth.pack_forget()
+            self.entry_fifth.pack_forget()
             self.entry_second.pack()
-            self.entry_third.pack_forget()
+            self.entry_third.pack()
         elif shape == 7:
             self.label_first.config(text='Axis')
             self.label_second.config(text='Axis(2)')
-            self.label_third.pack_forget()
-            self.entry_second.pack()
+            self.label_third.config(text='')
+            self.label_fourth.config(text='')
+            self.label_fifth.config(text='')
             self.entry_third.pack_forget()
+            self.entry_fourth.pack_forget()
+            self.entry_fifth.pack_forget()
+            self.entry_second.pack()
 
     def compute_area(self):
         try:
@@ -185,13 +233,41 @@ class GUI:
         except TypeError:
             self.label_result.config(text='Values must be positive')
 
-    # FIXME: add logic for function
     def compute_perimeter(self):
-        pass
+        try:
+            first_num = self.entry_first.get()
+            second_num = self.entry_second.get()
+            third_num = self.entry_third.get()
+            fourth_num = self.entry_fourth.get()
+            fifth_num = self.entry_fifth.get()
+            shape = self.radio_1.get()
+
+            if shape == 1:
+                self.label_result.config(text=f'Circle circumference = {perimeter.circle(first_num)}')
+            elif shape == 2:
+                self.label_result.config(text=f'Square perimeter = {perimeter.square(first_num)}')
+            elif shape == 3:
+                self.label_result.config(text=f'Rectangle perimeter = {perimeter.rectangle(first_num, second_num)}')
+            elif shape == 4:
+                self.label_result.config(text=f'Triangle perimeter = {perimeter.triangle(first_num, third_num, fourth_num)}')
+            elif shape == 5:
+                self.label_result.config(text=f'Trapezoid perimeter = {perimeter.trapezoid(first_num, second_num, fourth_num, fifth_num)}')
+            elif shape == 6:
+                self.label_result.config(text=f'Rhombus perimeter = {perimeter.rhombus(third_num)}')
+            elif shape == 7:
+                self.label_result.config(text=f'Ellipse circumference = {perimeter.ellipse(first_num, second_num)}')
+            else:
+                self.label_result.config(text='No operation selected')
+        except ValueError:
+            self.label_result.config(text='Enter numeric values')
+        except TypeError:
+            self.label_result.config(text='Values must be positive')
 
     def clear(self):
         self.entry_first.delete(0, END)
         self.entry_second.delete(0, END)
         self.entry_third.delete(0, END)
+        self.entry_fourth.delete(0, END)
+        self.entry_fifth.delete(0, END)
         self.label_result.config(text='')
 
