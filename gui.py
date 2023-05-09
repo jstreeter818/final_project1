@@ -24,7 +24,7 @@ class GUI:
         self.trapezoid_image = PhotoImage(file="images/trapezoid.png")
         self.trapezoid_image = self.trapezoid_image.subsample(5)
         self.rhombus_image = PhotoImage(file="images/rhombus.png")
-        self.rhombus_image = self.rhombus_image.subsample(15)
+        self.rhombus_image = self.rhombus_image.subsample(8)
         self.ellipse_image = PhotoImage(file="images/ellipse.png")
         self.ellipse_image = self.ellipse_image.subsample(6)
 
